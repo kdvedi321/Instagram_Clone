@@ -1,5 +1,6 @@
+const express = require("express");
 const userRouter = new express.Router();
-let { createUser, updateUUser, deleteUser, getUser } = require("../controller/userController");
+let { createUser, updateUser, deleteUser, getUser } = require("../controller/userController");
 // user routes
 // /:user_id
 // read => GET ONE
