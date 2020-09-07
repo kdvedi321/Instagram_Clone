@@ -6,4 +6,5 @@ var connection = mysql.createConnection({
     database: 'Instagram_Database'
 })
 connection.connect();
+console.log("connected to db");
 module.exports = connection;
