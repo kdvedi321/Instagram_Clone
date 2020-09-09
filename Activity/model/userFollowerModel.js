@@ -24,7 +24,7 @@ const acceptRequestQ = function (user_id, follower_id){
 }
 const rejectRequestQ = function(user_id, follower_id){
     return new Promise(function(resolve, reject){
-        db.query(`DELETE from user_follower WHERE user_id="${user_id}" AND follower_id="${follower_id} AND is_pending=1"`, function(err, result){
+        db.query(`DELETE from user_follower WHERE user_id="${user_id}" AND follower_id="${follower_id}" AND is_pending=1`, function(err, result){
             if(err){
                 reject(err);
             }else{

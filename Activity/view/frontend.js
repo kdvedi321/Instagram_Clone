@@ -36,9 +36,9 @@ async function populateFollowers(id){
     }
 }
 function AddToUI(followerObj){
-    let div = d.createElement("div");
+    let div = document.createElement("div");
     let img = document.createElement("img");
-    let handleSpan = d.createElement("span");
+    let handleSpan = document.createElement("span");
     handleSpan.textContent = followerObj.handle;
     img.src = followerObj.p_img_url == null ? "default.png" : followerObj.p_img_url;
     img.height = "40";

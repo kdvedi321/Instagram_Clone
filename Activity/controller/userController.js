@@ -149,6 +149,7 @@ async function handleRequest(req, res){
                 "message": "your request has been accepted"
             })
         }
+        reqobj.is_pending = true;
         let mappingObj = await userFollowerModel.createRequest(reqobj);
         return res.status(201).json({
             status: "pending",
@@ -205,11 +206,13 @@ async function getAllFollowers(req, res){
                 console.log(handle);
                 return { handle, p_img_url, is_pending };
             }
-            let folImgHandArr = [];
-            for(let i=0;i<UfollResult.length;i++){
-                let ans = await helper(UfollResult[i]);
-                folImgHandArr.push(ans);
-            }
+            // let folImgHandArr = [];
+            // for(let i=0;i<UfollResult.length;i++){
+            //     let ans = await helper(UfollResult[i]);
+            //     folImgHandArr.push(ans);
+            // }
+            let pArray = UfollResult.map(helper);
+            let folImgHandArr = await Promise.all(pArray);
             res.status(201).json({
                 success: "successfull",
                 message: folImgHandArr
