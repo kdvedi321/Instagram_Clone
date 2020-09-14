@@ -11,6 +11,8 @@ let myObj = {
             console.log(this.name);
         }
         inner();
+        let boundFn = inner.bind(myObj);
+        boundFn();
     }
 }
 myObj.sayHi();
