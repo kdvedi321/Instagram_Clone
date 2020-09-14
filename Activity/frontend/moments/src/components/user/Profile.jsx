@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import axios from 'axios';
 class Profile extends Component {
     constructor(){
         super();
-        state = {
+        let state = {
             src: "",
             title: "",
             albumId: ""
