@@ -5,7 +5,7 @@ import UserComponent from './components/user/UserComponent';
 
 function App() {
   return (
-    <React.Component><UserComponent></UserComponent></React.Component>  
+    <React.Fragment><UserComponent></UserComponent></React.Fragment>  
   );
 }
 
