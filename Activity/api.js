@@ -6,6 +6,7 @@ const path = require("path");
 const userRouter = require("./router/userRouter");
 // to send static resources to client
 app.use(express.static("view"));
+const postRouter = require("./router/postRouter");
 // const postRouter = require("./router/postRouter");
 // app.use(function(req, res, next){
 //     console.log("1st");
@@ -24,6 +25,7 @@ app.use(express.json());
 //     next();
 // })
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/post", postRouter);
 // app.use("/api/post", postRouter);
 // *****************POST************************
 // localhost:4000/api/users

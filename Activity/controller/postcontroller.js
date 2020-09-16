@@ -1,17 +1,30 @@
 const postDB = require("../model/post.json");
-function createPost(req, res){
-    let post = req.body;
-    postDB.push(post);
-    false.writeFileSync(path.join(__dirname, "post.json"), JSON.stringify(postDB));
-    res.status(201).json({
-        success: "successfull",
-        post: post
-    })
+const postModel = require("../model/postModel");
+async function createPost(req, res){
+    // let post = req.body;
+    // postDB.push(post);
+    // false.writeFileSync(path.join(__dirname, "post.json"), JSON.stringify(postDB));
+    // res.status(201).json({
+    //     success: "successfull",
+    //     post: post
+    // })
+    try{
+        let nPost = await postModel.create(req.body);
+        res.status(201).json({
+            success: "successfull",
+            post: nPost
+        })    
+    }catch(err){
+        res.status(500).json({
+            success: "failure",
+            "message": err.message
+        })
+    }
 }
 function getPost(req, res){
     let { post_id } = req.params;
     let post;
-    for(let i=0;i<DB.length;i++){
+    for(let i=0;i<postDB.length;i++){
         if(postDB[i].post_id == post_id){
             post = postDB[i];
         }
