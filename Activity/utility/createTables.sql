@@ -14,3 +14,6 @@ CREATE TABLE IF NOT EXISTS user_follower(
     is_pending BOOLEAN DEFAULT true,
     INDEX (user_id)
 );
+-- CREATE TABLE IF NOT EXISTS user_following(
+    
+-- );

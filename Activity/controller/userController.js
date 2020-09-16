@@ -204,7 +204,7 @@ async function getAllFollowers(req, res){
                 let { follower_id, is_pending } = userfollowObj;
                 let { handle, p_img_url } = await userModel.getById(follower_id);
                 console.log(handle);
-                return { handle, p_img_url, is_pending };
+                return { follower_id, handle, p_img_url, is_pending };
             }
             // let folImgHandArr = [];
             // for(let i=0;i<UfollResult.length;i++){

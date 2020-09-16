@@ -26,10 +26,26 @@ async function populateFollowers(id){
         let followerObj = arr[i];
         let div = AddToUI(followerObj);
         if(followerObj.is_pending){
+            console.log(followerObj);
             rEntry.appendChild(div);
             let p = document.createElement("p");
-            p.innerText = "Accept : Reject";
-            div.appendChild(p);
+            // p.innerText = "Accept : Reject";
+            let abutton = document.createElement("button");
+            abutton.innerHTML = "Accept";
+            abutton.addEventListener("click", async function(){
+                await axios.patch(`api/v1/users/fr/${id}/${followerObj.follower_id}`);
+                populateFollowers(id);
+            })
+            div.appendChild(abutton);
+            let rbutton = document.createElement("button");
+            rbutton.innerHTML = "Reject";
+            rbutton.addEventListener("click", async function(){
+                await axios.delete(`api/v1/users/fr/${id}/${followerObj.follower_id}`);
+                populateFollowers(id);
+            })
+            div.appendChild(rbutton);
+            div.appendChild(rbutton);
+            // div.appendChild(p);
         }else{
             fEntry.appendChild(div);
         }
