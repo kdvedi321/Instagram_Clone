@@ -2,6 +2,11 @@
 import ReactDOM from 'react-dom';
 import ProfileDetails from "./components/user/ProfileDetails";
 import './index.css';
+import Settings from "./components/SettingsPage";
+import LoginPage from "./components/LoginPage";
+import PageNotFound from "./components/PageNotFound";
+import PostView from "./components/post/PostView";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import React, { Component } from 'react';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -79,16 +84,30 @@ function MenuList(props){
 function App(){
   return(
     <React.Fragment>
-      <div className="app">
-        <UserView></UserView>
-        <div className="postView"></div>
-      </div>
+      <Switch>
+        <Route path="/profile">
+          <div className="app">
+            <UserView></UserView>
+            <PostView></PostView>
+          </div>
+        </Route>
+        <Route path="/" exact>
+          <LoginPage></LoginPage>
+        </Route>
+        <Redirect path="/login" exact></Redirect>
+        <Route path="/setting" exact>
+          <Settings></Settings>
+        </Route>
+        <Route>
+          <PageNotFound></PageNotFound>
+        </Route>
+      </Switch>
     </React.Fragment>
   );
 }
 
 ReactDOM.render(
-    <App />,
+    <BrowserRouter><App /></BrowserRouter>,
   document.getElementById('root')
 );
 
