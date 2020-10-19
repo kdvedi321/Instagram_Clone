@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy({
     async function(request, accessToken, refreshToken, profile, done){
         console.log("Inside passport cb");
         console.log(profile);
-        let resArr = await query(`SELECT * from user WHER gmail_id="${profile.id}"`);
+        let resArr = await query(`SELECT * from user WHERE gmail_id="${profile.id}"`);
         let user = {};
         if(resArr.length == 0){
             user = {

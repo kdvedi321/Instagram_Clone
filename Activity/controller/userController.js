@@ -48,6 +48,12 @@ async function getUser(req, res){
 async function updateUser(req, res){
     let { user_id } = req.params;
     let updateObj = req.body;
+    console.log(req.body);
+    let img;
+    if(req.file){
+        img = req.file.filename;
+        updateObj.p_img_url = "/user/" + img;
+    }
     // let user;
     // let toUpdate = req.body;
     // for(let i=0;i<userDB.length;i++){
@@ -102,7 +108,7 @@ async function deleteUser(req, res){
     // })
     try{
         const dUser = await userModel.getById(user_id);
-        await userModel.deleteById(user_id);
+        await userModel.deleteById(user_id, updateObj);
         res.status(200).json({
             status: "success",
             "message": dUser
